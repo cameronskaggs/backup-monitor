@@ -35,7 +35,7 @@ def create_not_in_file(not_in_file_list, file_dict, file_name):
 
     with open(file_name, 'x') as f:
         for sha1_hash in not_in_file_list:
-            f.write(file_dict[sha1_hash] + "\n")
+            f.write(file_dict[sha1_hash] + "\r\n")
 
 if __name__ == "__main__":
     old_file = "Old.sha1.txt"
@@ -53,5 +53,5 @@ if __name__ == "__main__":
     print(f"Old not in new{old_not_in_new_hash_list}")
     print(f"New not in old{new_not_in_old_hash_list}")
 
-    create_not_in_file(old_not_in_new_hash_list, old_values, 'OldNotInNew.txt')
-    create_not_in_file(new_not_in_old_hash_list, new_values, 'NewNotInOld.txt')
+    create_not_in_file(old_not_in_new_hash_list, old_values, 'output/OldNotInNew.txt')
+    create_not_in_file(new_not_in_old_hash_list, new_values, 'output/NewNotInOld.txt')
