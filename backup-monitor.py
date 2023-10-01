@@ -26,7 +26,6 @@ def get_list_of_hashes_not_in_file(file_1, file_2):
 
     for sha1_hash in file_1:
         if sha1_hash not in file_2:
-            print (sha1_hash)
             not_in_file.append(sha1_hash)
     return not_in_file
 
@@ -44,14 +43,8 @@ if __name__ == "__main__":
     old_values = format_file(old_file)
     new_values = format_file(new_file)
 
-    print(f"Old files {old_values}")
-    print(f"New files {new_values}")
-
     old_not_in_new_hash_list = get_list_of_hashes_not_in_file(old_values, new_values)
     new_not_in_old_hash_list = get_list_of_hashes_not_in_file(new_values, old_values)
 
-    print(f"Old not in new{old_not_in_new_hash_list}")
-    print(f"New not in old{new_not_in_old_hash_list}")
-
-    create_not_in_file(old_not_in_new_hash_list, old_values, 'output/OldNotInNew.txt')
-    create_not_in_file(new_not_in_old_hash_list, new_values, 'output/NewNotInOld.txt')
+    create_not_in_file(old_not_in_new_hash_list, old_values, 'OldNotInNew.txt')
+    create_not_in_file(new_not_in_old_hash_list, new_values, 'NewNotInOld.txt')
