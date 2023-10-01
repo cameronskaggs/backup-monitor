@@ -1,5 +1,6 @@
 import sys
 import warnings
+import argparse
 
 # organizes the backup file into a dict where each key is a hash and their values are the file names
 def format_file(file_path):
@@ -37,14 +38,20 @@ def create_not_in_file(not_in_file_list, file_dict, file_name):
             f.write(file_dict[sha1_hash] + "\r\n")
 
 if __name__ == "__main__":
-    old_file = "Old.sha1.txt"
-    new_file = "New.sha1.txt"
 
-    old_values = format_file(old_file)
-    new_values = format_file(new_file)
+    parser = argparse.ArgumentParser()
+    parser.add_argument('-o', '--oldfile', nargs='?', default="Old.sha1.txt")
+    parser.add_argument('-n', '--newfile', nargs='?', default="New.sha1.txt" )
+    parser.add_argument('-or', '--oldresultfile', nargs='?', default="OldNotInNew.txt" )
+    parser.add_argument('-nr', '--newresultfile', nargs='?', default="NewNotInOld.txt" )
+    
+    args = parser.parse_args()
+
+    old_values = format_file(args.oldfile)
+    new_values = format_file(args.newfile)
 
     old_not_in_new_hash_list = get_list_of_hashes_not_in_file(old_values, new_values)
     new_not_in_old_hash_list = get_list_of_hashes_not_in_file(new_values, old_values)
 
-    create_not_in_file(old_not_in_new_hash_list, old_values, 'OldNotInNew.txt')
-    create_not_in_file(new_not_in_old_hash_list, new_values, 'NewNotInOld.txt')
+    create_not_in_file(old_not_in_new_hash_list, old_values, args.oldresultfile)
+    create_not_in_file(new_not_in_old_hash_list, new_values, args.newresultfile)

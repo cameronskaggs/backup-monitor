@@ -1,0 +1,3 @@
+~/Expected file 4.py
+/Expected file 5.docx
+/usr/bin/expected-file-6.sh
