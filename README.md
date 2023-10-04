@@ -6,10 +6,11 @@ Requires python 3 to run
 ## How to use
 <ol>
 <li> Clone this repo locally. cd into the project's root directory </li>
-<li> Copy the values in from old backup files into a file called 
-`Old.sha1.txt` and from your new ones in `New.sha1.txt` 
+<li> Copy the values of old backup files into a file called 
+Old.sha1.txt and from your new ones in New.sha1.txt 
 Copy these values into the project root directory</li>
-<li> Run `python3 backup-monitor.py` </li>
+<li> Run the following command: python3 backup-monitor.py </li>
+<li> The resulting files NewNotInOld.txt and OldNotInNew.txt will be in the project's root directory (Note delete these before re-rerunning or the program will throw a FileExistsError</li>
 </ol>
 
 ## Optional flags

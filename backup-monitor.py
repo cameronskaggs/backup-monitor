@@ -19,7 +19,7 @@ def format_file(file_path):
 
     except FileNotFoundError:
         print(f"Could not find file: {file_path}")
-        return None
+        sys.exit()
 
 # returns a list of the hashes in file_1 which aren't in file_2
 def get_list_of_hashes_not_in_file(file_1, file_2):
